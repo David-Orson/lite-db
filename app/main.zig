@@ -20,7 +20,7 @@ pub fn main() !void {
         var file = try std.fs.cwd().openFile(database_file_path, .{});
         defer file.close();
 
-        try std.io.getStdOut().writer().print("Logs from program\n", .{});
+        //try std.io.getStdOut().writer().print("Logs from program\n", .{});
 
         var buf: [2]u8 = undefined;
         _ = try file.seekTo(16);
