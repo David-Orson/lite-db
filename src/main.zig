@@ -21,13 +21,12 @@ pub fn main() !void {
         defer file.close();
 
         // You can use print statements as follows for debugging, they'll be visible when running tests.
-        try std.io.getStdOut().writer().print("Logs from your program will appear here\n", .{});
+        //try std.io.getStdOut().writer().print("Logs from your program will appear here\n", .{});
 
-        // Uncomment this block to pass the first stage
-        // var buf: [2]u8 = undefined;
-        // _ = try file.seekTo(16);
-        // _ = try file.read(&buf);
-        // const page_size = std.mem.readInt(u16, &buf, .big);
-        // try std.io.getStdOut().writer().print("database page size: {}\n", .{page_size});
+        var buf: [2]u8 = undefined;
+        _ = try file.seekTo(16);
+        _ = try file.read(&buf);
+        const page_size = std.mem.readInt(u16, &buf, .big);
+        try std.io.getStdOut().writer().print("database page size: {}\n", .{page_size});
     }
 }
